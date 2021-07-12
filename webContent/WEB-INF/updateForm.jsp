@@ -7,10 +7,10 @@
 <%
 
 	PhoneDao phoneDao = new PhoneDao();
-
+	//파라미터(personId) 꺼내기
 	int personId = Integer.parseInt(request.getParameter("personId"));
 	System.out.println(personId);
-	
+	//dao에서 한 사람의 id 가져오기 --> phoneDao.getPerson()
 	PhoneVo phoneVo = phoneDao.getPerson(personId);
 	System.out.println(phoneVo.toString());
 

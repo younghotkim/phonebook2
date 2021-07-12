@@ -87,12 +87,17 @@ public class PhoneController extends HttpServlet {
 			
 			int count = phoneDao.personInsert(phoneVo);
 			
-			System.out.println(count);
-			
-			//리다이렉트
-			response.sendRedirect("/phonebook2/pbc?action=list");
-			
-			
+			if (count > 0) {
+				
+				System.out.println("추가완료");
+				//리다이렉트 리스트 (action=list)
+				response.sendRedirect("/phonebook2/pbc?action=list");
+				
+			} else {
+				
+				System.out.println("추가실패");
+				
+			}		
 			
 		}else if("delete".equals(action)) {
 			
@@ -100,20 +105,31 @@ public class PhoneController extends HttpServlet {
 			
 			PhoneDao phoneDao = new PhoneDao();
 			
+			//파라미터(personId) 꺼내기
 			int personId = Integer.parseInt(request.getParameter("personId"));
 			System.out.println(personId);
 			
+			//삭제하기
 			int count = phoneDao.personDelete(personId);
 			
-			response.sendRedirect("/phonebook2/pbc?action=list");
-			
+			if (count > 0) {
+				
+				System.out.println("삭제완료");
+				//리다이렉트 리스트 (action=list)
+				response.sendRedirect("/phonebook2/pbc?action=list");
+				
+			} else {
+				
+				System.out.println("삭제실패");
+				
+			}
 			
 		}else if("update".equals(action)) {
 			
 			System.out.println("수정");
 			
 			PhoneDao phoneDao = new PhoneDao();
-			
+			//파라미터(personId, name, hp, company) 꺼내기
 			int personId = Integer.parseInt(request.getParameter("personId"));
 			String name = request.getParameter("name");
 			String hp = request.getParameter("hp");
@@ -124,12 +140,22 @@ public class PhoneController extends HttpServlet {
 			
 			int count = phoneDao.personUpdate(phoneVo);
 			
-			response.sendRedirect("/phonebook2/pbc?action=list");
+			if (count > 0) {
+				
+				System.out.println("수정완료");
+				
+				response.sendRedirect("/phonebook2/pbc?action=list");
+				
+			} else {
+				
+				System.out.println("수정실패");
 			
+			}
+				
 		}else if ("uform".equals(action)) {
 			
 			System.out.println("수정폼");
-			
+			//updateForm.jsp-->forward
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
 			rd.forward(request, response);
 			
