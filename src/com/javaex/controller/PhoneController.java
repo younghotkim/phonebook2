@@ -155,7 +155,12 @@ public class PhoneController extends HttpServlet {
 		}else if ("uform".equals(action)) {
 			
 			System.out.println("수정폼");
-			//updateForm.jsp-->forward
+			
+			
+			int personId = Integer.parseInt(request.getParameter("personId"));
+			//personId를 꺼내서
+			request.setAttribute("personId", personId);
+			//어트리뷰트, 포워드
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
 			rd.forward(request, response);
 			
