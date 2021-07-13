@@ -156,10 +156,14 @@ public class PhoneController extends HttpServlet {
 			
 			System.out.println("수정폼");
 			
+			PhoneDao phoneDao = new PhoneDao();
 			
 			int personId = Integer.parseInt(request.getParameter("personId"));
 			//personId를 꺼내서
-			request.setAttribute("personId", personId);
+			
+			PhoneVo phoneVo = phoneDao.getPerson(personId);
+					
+			request.setAttribute("phoneVo", phoneVo);
 			//어트리뷰트, 포워드
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
 			rd.forward(request, response);

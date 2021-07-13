@@ -5,16 +5,8 @@
 <%@ page import="com.javaex.vo.*" %>
  
 <%
-
-	PhoneDao phoneDao = new PhoneDao();
-	//어트리뷰트 받은 파라미터(personId) 꺼내기
-	int personId = (int)request.getAttribute("personId");
-	System.out.println(personId);
-	//dao에서 한 사람의 id 가져오기 --> phoneDao.getPerson()
-	PhoneVo phoneVo = phoneDao.getPerson(personId);
-	System.out.println(phoneVo.toString());
-
-
+	//어트리뷰트한 phoneVo를 꺼내기
+	PhoneVo phoneVo = (PhoneVo)request.getAttribute("phoneVo");
 
 %>   
     
