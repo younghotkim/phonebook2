@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.dao.PhoneDao;
+import com.javaex.util.WebUtil;
 import com.javaex.vo.PhoneVo;
 
 
@@ -54,8 +55,10 @@ public class PhoneController extends HttpServlet {
 			//일일히 html 코드를 작성해야해서 너무 복잡함
 			//html 작업 --> JSP에게 시킨다 --> forward 한다
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/list.jsp");
+			//rd.forward(request, response);
+			
+			WebUtil.forward(request, response, "/WEB-INF/list.jsp");
 			
 		}else if("wform".equals(action)) {
 			
@@ -63,8 +66,9 @@ public class PhoneController extends HttpServlet {
 			
 			//writeForm.jsp --> 데이터x
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/writeForm.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/writeForm.jsp");
+			//rd.forward(request, response);
+			WebUtil.forward(request, response, "/WEB-INF/writeForm.jsp");
 			
 		}else if("insert".equals(action)) {
 			
@@ -91,7 +95,9 @@ public class PhoneController extends HttpServlet {
 				
 				System.out.println("추가완료");
 				//리다이렉트 리스트 (action=list)
-				response.sendRedirect("/phonebook2/pbc?action=list");
+				//response.sendRedirect("/phonebook2/pbc?action=list");
+				
+				WebUtil.redirect(request, response, "/phonebook2/pbc?action=list");
 				
 			} else {
 				
@@ -116,7 +122,8 @@ public class PhoneController extends HttpServlet {
 				
 				System.out.println("삭제완료");
 				//리다이렉트 리스트 (action=list)
-				response.sendRedirect("/phonebook2/pbc?action=list");
+				//response.sendRedirect("/phonebook2/pbc?action=list");
+				WebUtil.redirect(request, response, "/phonebook2/pbc?action=list");
 				
 			} else {
 				
@@ -144,7 +151,9 @@ public class PhoneController extends HttpServlet {
 				
 				System.out.println("수정완료");
 				
-				response.sendRedirect("/phonebook2/pbc?action=list");
+				//response.sendRedirect("/phonebook2/pbc?action=list");
+				
+				WebUtil.redirect(request, response, "/phonebook2/pbc?action=list");
 				
 			} else {
 				
@@ -165,8 +174,10 @@ public class PhoneController extends HttpServlet {
 					
 			request.setAttribute("phoneVo", phoneVo);
 			//어트리뷰트, 포워드
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
-			rd.forward(request, response);
+			//RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/updateForm.jsp");
+			//rd.forward(request, response);
+			
+			WebUtil.forward(request, response, "/WEB-INF/updateForm.jsp");
 			
 		}
 
