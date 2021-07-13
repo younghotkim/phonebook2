@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class WebUtil {	
-	//Field
-	//Constructor
-	//Method GS
+
 	
 	//General Method
 	

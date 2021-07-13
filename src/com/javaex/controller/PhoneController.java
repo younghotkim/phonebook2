@@ -17,11 +17,6 @@ import com.javaex.vo.PhoneVo;
 
 @WebServlet("/pbc")
 public class PhoneController extends HttpServlet {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
